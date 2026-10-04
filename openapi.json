@@ -298,7 +298,7 @@
         "tags": [
           "Billing"
         ],
-        "summary": "Create Polar checkout for an org plan (base subscription)",
+        "summary": "Create polar checkout for an org plan (base subscription)",
         "parameters": [
           {
             "schema": {
@@ -490,7 +490,7 @@
         "tags": [
           "Billing"
         ],
-        "summary": "Buy a Run Pack (Small/Medium/Large) \u2014 adds runs to the org pool",
+        "summary": "Buy a run pack (small/medium/large) - adds runs to the org pool",
         "parameters": [
           {
             "schema": {
@@ -734,7 +734,7 @@
         "tags": [
           "Billing"
         ],
-        "summary": "Org subscription, run-pool usage, and per-project run estimates",
+        "summary": "org subscription, run-pool usage, and per-project run estimates",
         "parameters": [
           {
             "schema": {
@@ -3499,7 +3499,7 @@
         "tags": [
           "Prompt Details"
         ],
-        "summary": "Brand rankings with avg_visibility + pos/neu/neg sentiment counts",
+        "summary": "Brand rankings with avgvisibility + pos/neu/neg sentiment counts",
         "responses": {
           "200": {
             "description": "Rankings",
@@ -3576,7 +3576,7 @@
         "tags": [
           "Prompt Details"
         ],
-        "summary": "Top domains cited for a prompt, with source_type",
+        "summary": "Top domains cited for a prompt, with sourcetype",
         "parameters": [
           {
             "schema": {
@@ -4157,7 +4157,7 @@
         "tags": [
           "Brand Knowledge"
         ],
-        "summary": "List LLM-discovered brands awaiting triage",
+        "summary": "List llm-discovered brands awaiting triage",
         "parameters": [
           {
             "schema": {
@@ -5009,7 +5009,7 @@
         "tags": [
           "Analytics"
         ],
-        "summary": "Brand visibility leaderboard (uses brand_mentions.visibility_score)",
+        "summary": "Brand visibility leaderboard (uses brand mentions.visibilityscore)",
         "parameters": [
           {
             "schema": {
@@ -5155,7 +5155,7 @@
         "tags": [
           "Answer Engine"
         ],
-        "summary": "AEO stats (AI platforms only)",
+        "summary": "AEO stats (ai platforms only)",
         "responses": {
           "200": {
             "description": "AEO stats",
@@ -5203,7 +5203,7 @@
         "tags": [
           "Answer Engine"
         ],
-        "summary": "AEO visibility trend per AI platform \u2014 or per brand with `groupBy=brand`",
+        "summary": "AEO visibility trend per AI platform - or per brand with groupby=brand",
         "parameters": [
           {
             "schema": {
@@ -5468,7 +5468,7 @@
         "tags": [
           "Answer Engine"
         ],
-        "summary": "Top cited URLs with per-URL sentiment and who cited them",
+        "summary": "Top cited urls with per-url sentiment and who cited them",
         "parameters": [
           {
             "schema": {
@@ -5662,7 +5662,7 @@
         "tags": [
           "Citations"
         ],
-        "summary": "Total citations, unique domains, and top-N domains",
+        "summary": "Total citations, unique domains, and top-n domains",
         "parameters": [
           {
             "schema": {
@@ -5876,7 +5876,7 @@
         "tags": [
           "Sentiment"
         ],
-        "summary": "Sentiment overview from mention_contexts (pure counts)",
+        "summary": "Sentiment overview from mentioncontexts (pure counts)",
         "responses": {
           "200": {
             "description": "Sentiment overview",
@@ -5932,7 +5932,7 @@
         "tags": [
           "Sentiment"
         ],
-        "summary": "Daily pos/neu/neg counts (project-wide or per brand with `groupBy=brand`)",
+        "summary": "Daily pos/neu/neg counts (project-wide or per brand with groupby=brand)",
         "parameters": [
           {
             "schema": {
@@ -6118,7 +6118,7 @@
         "tags": [
           "Sentiment"
         ],
-        "summary": "Sentiment mix per brand (from mention_contexts)",
+        "summary": "Sentiment mix per brand (from mentioncontexts)",
         "responses": {
           "200": {
             "description": "Per brand",
@@ -6595,7 +6595,7 @@
         "tags": [
           "Content"
         ],
-        "summary": "Performance grouped by citations.source_type",
+        "summary": "Performance grouped by citations.sourcetype",
         "responses": {
           "200": {
             "description": "Performance by source type",
@@ -6646,7 +6646,7 @@
         "tags": [
           "Content"
         ],
-        "summary": "Citation count grouped by LLM-classified page_type",
+        "summary": "Citation count grouped by llm-classified pagetype",
         "responses": {
           "200": {
             "description": "Page-type breakdown",
@@ -6916,7 +6916,7 @@
         "tags": [
           "Opportunities"
         ],
-        "summary": "Update the Kanban state of an opportunity",
+        "summary": "Update the kanban state of an opportunity",
         "requestBody": {
           "content": {
             "application/json": {
