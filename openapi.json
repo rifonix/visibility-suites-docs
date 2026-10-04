@@ -490,7 +490,7 @@
         "tags": [
           "Billing"
         ],
-        "summary": "Buy a run pack (small/medium/large) - adds runs to the org pool",
+        "summary": "Buy a run pack (small, medium, or large); adds runs to the org pool",
         "parameters": [
           {
             "schema": {
@@ -3363,7 +3363,7 @@
         "tags": [
           "Prompt Details"
         ],
-        "summary": "Per-prompt rollup with pos/neu/neg counts",
+        "summary": "Per-prompt rollup with positive, neutral, and negative counts",
         "responses": {
           "200": {
             "description": "Prompt analytics",
@@ -3499,7 +3499,7 @@
         "tags": [
           "Prompt Details"
         ],
-        "summary": "Brand rankings with avgvisibility + pos/neu/neg sentiment counts",
+        "summary": "Brand rankings with average visibility and positive, neutral, and negative sentiment counts",
         "responses": {
           "200": {
             "description": "Rankings",
@@ -4274,7 +4274,7 @@
         "tags": [
           "Brand Knowledge"
         ],
-        "summary": "Demote a discovered brand (mark as aggregator/other/ignored)",
+        "summary": "Demote a discovered brand (mark as aggregator, other, or ignored)",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5009,7 +5009,7 @@
         "tags": [
           "Analytics"
         ],
-        "summary": "Brand visibility leaderboard (uses brand mentions.visibilityscore)",
+        "summary": "Brand visibility leaderboard using brand mentions and visibility score",
         "parameters": [
           {
             "schema": {
@@ -5390,7 +5390,7 @@
         "tags": [
           "Answer Engine"
         ],
-        "summary": "Per-prompt AEO performance (real visibility/mention/cite/sentiment/platforms)",
+        "summary": "Per-prompt AEO performance (visibility, mention, cite, sentiment, platforms)",
         "parameters": [
           {
             "schema": {
@@ -5932,7 +5932,7 @@
         "tags": [
           "Sentiment"
         ],
-        "summary": "Daily pos/neu/neg counts (project-wide or per brand with groupby=brand)",
+        "summary": "Daily positive, neutral, and negative counts (project-wide or per brand with groupby=brand)",
         "parameters": [
           {
             "schema": {
@@ -6400,7 +6400,7 @@
         "tags": [
           "Content"
         ],
-        "summary": "Content/citation stats",
+        "summary": "Content and citation stats",
         "responses": {
           "200": {
             "description": "Content stats",
