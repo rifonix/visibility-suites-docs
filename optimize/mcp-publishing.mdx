@@ -1,0 +1,72 @@
+---
+title: "MCP publishing"
+description: "Connect your CMS to Content Studio and publish approved drafts straight to your website, starting with WordPress."
+---
+
+MCP publishing sends finished Content Studio articles directly into your website's content system. WordPress is the first supported target.
+
+MCP, the Model Context Protocol, is a standard way for two software systems to hand content to each other, so Visibility Suite can publish into your CMS the same way a person would, without you copying and pasting.
+
+## What you need
+
+- A paid plan with Content Studio access
+- A website whose CMS exposes an MCP endpoint (for WordPress, your site URL with its MCP path, like `https://yoursite.com/mcp`)
+- An API key or token if your endpoint requires one
+
+If you are not sure whether your site has an MCP endpoint, ask whoever manages your website, or contact [support](/help/support).
+
+## Connect your CMS
+
+<Steps>
+  <Step title="Open the publishing section">
+    In Content Studio, open Content publishing (MCP) and add a connection.
+  </Step>
+  <Step title="Enter the connection details">
+    Give it a name, like "WordPress production", and the server URL your CMS provides.
+  </Step>
+  <Step title="Choose authentication">
+    Pick the method your endpoint uses: none, a bearer token, or a custom header such as an API key header. Your secret is stored encrypted.
+  </Step>
+  <Step title="Test the connection">
+    Testing discovers the tools your CMS exposes: typically create content, update content, and upload media.
+  </Step>
+  <Step title="Map the tools and fields">
+    Tell Visibility Suite which tool creates articles, which updates them, and which handles images, and how fields like title, body, slug, and featured image map across.
+  </Step>
+  <Step title="Set a default destination status">
+    Choose whether published pieces go live immediately or arrive as drafts in your CMS for a final look.
+  </Step>
+</Steps>
+
+## Publish a draft
+
+<Steps>
+  <Step title="Finish your article">
+    Review the draft in Content Studio until you are happy with it.
+  </Step>
+  <Step title="Publish">
+    Choose the connection and publish. New pages are created, and republishing an already published piece updates it in place.
+  </Step>
+  <Step title="Verify on your site">
+    Publishing history records every publish with its result and the external URL. Open published page takes you straight to the live article.
+  </Step>
+</Steps>
+
+## Safety notes
+
+<Warning>
+  Nothing publishes on its own. Every publish is an action you take on a draft you have reviewed.
+</Warning>
+
+- You approve each article before it leaves Content Studio.
+- Every publish is logged in Publishing history, including failures, so you can see exactly what happened.
+- Connection secrets are stored encrypted and never shown again after saving.
+- To stop publishing, disconnect the connection. Already published pages stay on your site; the link between the systems is what closes.
+
+<Tip>
+  Set your default destination status to draft in your CMS for the first few publishes. It gives you one more review step inside WordPress before anything goes live.
+</Tip>
+
+<Card title="Trouble publishing?" icon="wrench" href="/help/troubleshooting">
+  Common causes are expired keys and changed endpoints. The fix takes a minute.
+</Card>

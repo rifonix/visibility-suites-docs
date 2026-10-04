@@ -1,0 +1,55 @@
+---
+title: "Troubleshooting"
+description: "Symptoms, causes, and fixes for the most common Visibility Suite issues."
+---
+
+Most issues have a one-minute cause and a matching fix. Find your symptom below.
+
+<AccordionGroup>
+  <Accordion title="My dashboard has no data">
+    **Symptom:** Empty charts, "No data yet" states, or a banner saying a monitoring run is in progress.
+
+    **Why:** Your first run has not finished yet. Projects collect data on their schedule, and the dashboard fills in as results stream in.
+
+    **Fix:** Check Settings for your next scheduled run time, or use Run now once your project is active. If a run shows as failed in your run history, contact [support](/help/support).
+  </Accordion>
+  <Accordion title="My score dropped right after I changed prompts or platforms">
+    **Symptom:** Visibility score falls immediately after you edit your prompt library or platform selection.
+
+    **Why:** The mix changed, not your performance. New prompts you score low on, or a new platform where you are less visible, pull the average down. Your standing on the original questions is unchanged.
+
+    **Fix:** Compare like for like. Use the platform filter and topic breakdown to view your original set separately, and judge new prompts on their own trend after two or three runs.
+  </Accordion>
+  <Accordion title="A competitor is not being detected">
+    **Symptom:** You know a rival appears in AI answers, but they do not show in your reports.
+
+    **Why:** Mention matching relies on names and aliases. If AI writes their name differently (an abbreviation, a former name, a spelling variant), the mention goes unmatched.
+
+    **Fix:** Open Brand Hub and add every surface form as an alias on that tracked brand. Also check the discovered brands list: the classifier may have already spotted them under another form, waiting for you to promote or merge them.
+  </Accordion>
+  <Accordion title="Website changes are not showing up in results">
+    **Symptom:** You updated your site, but citations and scores have not moved.
+
+    **Why:** Reports reflect your last monitoring run, and AI platforms take their own time to re-read your pages. A change made today cannot appear in data collected yesterday.
+
+    **Fix:** Wait for the next scheduled run, or trigger Run now. For the website scan specifically, use Re-scan now on the Agent readiness page. Give AI platforms a few weekly cycles to absorb bigger changes.
+  </Accordion>
+  <Accordion title="The agent readiness scan failed to fetch my site">
+    **Symptom:** The scan returns "Not assessable" or a fetch error.
+
+    **Why:** Firewalls, bot protection, or security plugins often block automated scanners along with bad bots. Your site works for visitors but not for the scanner.
+
+    **Fix:** Ask whoever manages your website or hosting to allow the scanner through your bot protection, then use Re-scan now. If it still fails, email [support](/help/support) with your site address and we will pinpoint what is blocking it.
+  </Accordion>
+  <Accordion title="Publishing to my CMS failed">
+    **Symptom:** An MCP publish ends in an error, or the article never appears on your site.
+
+    **Why:** Usually the connection, not the article: an expired or rotated API key, a changed endpoint URL, or a tool mapping that no longer matches your CMS.
+
+    **Fix:** Open your MCP connections in Content Studio and test the connection. Re-enter the API key or reconnect if the test fails, confirm the tool mapping still matches, then publish again from Publishing history. If the test passes but publishes keep failing, send [support](/help/support) the error from Publishing history.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Still stuck?" icon="envelope" href="/help/support">
+  Contact support with the details that get you a fast answer.
+</Card>

@@ -1,0 +1,79 @@
+---
+title: "Agent readiness"
+description: "A weekly website scan that scores from 0 to 100 how easily AI crawlers and agents can find, read, and use your site."
+---
+
+Agent readiness is a checkup for your website, from an AI's point of view. Before ChatGPT or Perplexity can recommend your business, their crawlers have to find your pages and read them. The Agent readiness scan tests that and gives you a score from 0 to 100 with a letter grade from A+ to F.
+
+A site AI cannot read is a site AI cannot recommend. That is why this number matters as much as your visibility score.
+
+<Note>
+  Agent readiness is available on paid plans. See [plans and billing](/account/plans-and-billing).
+</Note>
+
+## What the scan checks
+
+Each check passes, partially passes, or fails. Pass earns full marks, partial earns half, fail earns zero. The core score is out of 100, with an optional commerce bonus of up to 10 extra marks for sites that support agent-initiated payments.
+
+**Discovery**
+
+- `robots.txt`: a valid robots file is the baseline discovery contract between your site and crawlers
+- Sitemap: exposes your canonical pages and sections
+- HTTP discovery links: makes canonical resources machine-visible
+- DNS guidance: helps agents find your authoritative site identity
+
+**Content accessibility**
+
+- Clean markdown or text representation of your pages, so AI can consume content directly instead of fighting through layout code
+
+**Bot policy**
+
+- An explicit AI crawler policy, so you are not accidentally blocking good crawlers or overexposing private areas
+- Content usage signals that explain how your content may be used or summarized
+- Verified bot identity, which separates trusted agents from spoofed traffic
+
+**Agent interfaces**
+
+- A discoverable API catalog
+- MCP metadata that exposes your tools and capabilities in a standard way
+- Declared skills and Web MCP support for browser-facing agent interactions
+
+## Your result
+
+Alongside the score and grade, each scan reports a verdict:
+
+| Verdict | What it means |
+| --- | --- |
+| **Agent ready** | AI crawlers can find and read your site |
+| **Needs work** | Some checks failed; fixes are listed per check |
+| **Not ready** | Major blockers prevent AI access |
+| **Not assessable** | The scanner could not reach or read your site |
+
+The scan also names your current readiness level and the specific requirements to reach the next one, with actionable guidance per check.
+
+## Scans run on a schedule
+
+Your site re-scans automatically every week, and you can trigger a fresh scan anytime with Re-scan now. Scan history keeps each result, so you can watch your grade climb as fixes land.
+
+<Steps>
+  <Step title="Open Agent readiness">
+    Find it under Optimization. The first scan may already be running.
+  </Step>
+  <Step title="Read the failing checks first">
+    Each failed or partial check includes an explanation of why it matters and what to change.
+  </Step>
+  <Step title="Fix common failures">
+    Most fixes are quick for whoever manages your website: repair or create `robots.txt`, publish a sitemap, stop blocking AI crawlers in your security settings, and expose a plain-text or markdown version of key pages.
+  </Step>
+  <Step title="Re-scan and confirm">
+    Use Re-scan now after each fix. Your score updates immediately, and the weekly schedule keeps it honest.
+  </Step>
+</Steps>
+
+<Tip>
+  Treat agent readiness like a health score for your website. Fixes here raise the ceiling on everything else: citations, mentions, and recommendations all depend on AI being able to read you.
+</Tip>
+
+<Card title="Scan failed to fetch your site?" icon="wrench" href="/help/troubleshooting">
+  Firewalls and bot protection are the usual cause. See the fix.
+</Card>

@@ -1,0 +1,60 @@
+---
+title: "Topics and prompts"
+description: "Manage the questions Visibility Suite asks AI on your behalf: topics, AI prompt generation, editing and pausing prompts, and reading saved answers."
+---
+
+Prompts are the heart of monitoring. Each one is a question a real customer might ask AI, and each gets asked on every platform you track, on a schedule. The Prompt library is where you manage them.
+
+## Topics
+
+Topics group related prompts so reports stay readable: "emergency repairs", "kids' birthday parties", "teeth whitening". The sidebar lists your topics, and "Add Topic" creates new ones. Topics come from onboarding, and you can add more anytime. Reports like Topic Performance on the Overview roll up by these groups, so name them after the parts of the business you care about.
+
+## Why the wording sounds the way it does
+
+Generated prompts follow a deliberate pattern: market-level, buying-intent, brand-name-free. "Best Italian restaurant in Tempe" is a good prompt; "Is Tony's Italian good?" is not. The first is a question where AI must choose among businesses, which is exactly the moment you want to win. Prompts only your business could match teach you nothing.
+
+Each prompt carries an intent label (informational, transactional, comparison, or navigational) and an estimated monthly search volume, so you can see which questions are worth the most.
+
+## The prompt library
+
+The library table shows every prompt with its topic, platforms, visibility, and status. Prompts can be active, paused, or archived. Archiving removes a prompt from the active list, and the "Archived Prompts" view lets you restore it later. You can export the whole library to CSV.
+
+## Generating and adding prompts
+
+<Steps>
+  <Step title="Open Add Prompt">
+    Choose a topic, then pick "AI Generate" for suggestions or "Manual" to type your own question.
+  </Step>
+  <Step title="Generate suggestions">
+    The AI drafts candidate questions for the topic, grounded in your business profile and market. Use "Regenerate" for a fresh batch.
+  </Step>
+  <Step title="Select and save">
+    Tick the prompts you want to keep. They join the active library and run with the next scheduled monitoring cycle.
+  </Step>
+</Steps>
+
+## Priority prompts
+
+Your monitoring schedule keeps a priority prompt list: the pinned questions that matter most to you. Use it to mark the prompts you never want to lose sight of as your library grows, then manage the list from your schedule in Settings.
+
+## Reading a single prompt
+
+Open any prompt for its detail view. Three KPIs sit on top: your visibility score for this question, your citation rate, and your sentiment mix (scored 0 to 100, where 50 is neutral). Below that:
+
+- **Platform Performance**: how each AI engine treats this question, with visibility, mention, and citation breakdowns.
+- **Platform answers**: the full saved response from every platform, every run. Open the raw capture if you want the underlying JSON.
+- **Brand Rankings**: which brands get mentioned on this question, and how visible each is.
+- **Citation domains**: the websites AI used as sources for this question.
+
+The saved answers are the ground truth: when a number surprises you, read the actual answers behind it.
+
+## What to read next
+
+<CardGroup cols={2}>
+  <Card title="Schedules and runs" icon="calendar" href="/setup/schedules">
+    Control how often your prompts run.
+  </Card>
+  <Card title="The dashboard" icon="gauge" href="/insights/overview">
+    See how prompt results roll up into scores.
+  </Card>
+</CardGroup>

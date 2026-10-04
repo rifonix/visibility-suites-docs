@@ -1,0 +1,14 @@
+# agent tooling (installed by skills CLI, not docs content)
+.agents/
+.claude/
+.devin/
+.goose/
+.hermes/
+.kiro/
+.openhands/
+.pi/
+.qoder/
+.windsurf/
+.zcode/
+skills/
+skills-lock.json

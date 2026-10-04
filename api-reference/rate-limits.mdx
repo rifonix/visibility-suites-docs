@@ -1,0 +1,60 @@
+---
+title: 'Rate limits'
+description: 'How rate limiting works, what a 429 response looks like, and how to retry safely.'
+---
+
+The API enforces fair-use rate limits per user and per endpoint. Counters are tracked in a fixed time window, so your budget on one endpoint does not affect another.
+
+## What happens when you hit a limit
+
+Requests beyond the limit fail fast with `429` and a simple JSON body:
+
+```json
+{
+  "error": "Rate limit exceeded"
+}
+```
+
+Two things to know about the current behavior:
+
+- The API does not return `X-RateLimit-*` headers or a `Retry-After` header today, so you cannot introspect your remaining budget. Design your client to treat a `429` as the signal.
+- Limit values vary by endpoint and can change as the platform evolves. Do not hard-code a specific requests-per-minute assumption; back off when told to.
+
+## Retry guidance
+
+Handle `429` (and only `429` among 4xx codes) with exponential backoff and jitter:
+
+1. Wait 1 second, then retry.
+2. Double the wait on each subsequent `429`: 2s, 4s, 8s.
+3. Add random jitter of up to 50 percent so parallel workers do not retry in lockstep.
+4. Give up after about 5 attempts and surface the failure.
+
+A minimal retry loop in shell form:
+
+```bash
+for attempt in 1 2 3 4 5; do
+  response=$(curl -s -w "\n%{http_code}" \
+    https://api.visibilitysuite.ai/api/v1/projects/proj_8h3k2m/analytics/overview \
+    -H "Authorization: Bearer YOUR_SESSION_TOKEN")
+  status=$(echo "$response" | tail -n1)
+  if [ "$status" != "429" ]; then
+    echo "$response" | head -n -1
+    break
+  fi
+  sleep $((2 ** (attempt - 1)))
+done
+```
+
+If a `Retry-After` header ever appears in a response, honor it over your computed backoff.
+
+## The API is read-heavy by design
+
+Monitoring runs are queued asynchronously. `POST /projects/{projectId}/monitoring/trigger` enqueues a run and returns immediately; the run executes in the background and can take minutes as it queries each AI platform. Do not poll the trigger endpoint or re-trigger to check progress.
+
+Instead:
+
+1. Trigger once, then poll `GET /projects/{projectId}/monitoring/runs` (or `/runs/{runId}` for a specific run) every 30 to 60 seconds until the status changes.
+2. Cache analytics responses client-side. Visibility, citation, and sentiment data updates when a run completes, so refetching more often than your run cadence gains you nothing and burns your rate budget.
+3. Spread bulk reads across time rather than firing them in parallel bursts.
+
+Following this pattern keeps you comfortably inside the limits for normal reporting and dashboard workloads.

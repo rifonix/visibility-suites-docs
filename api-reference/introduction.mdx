@@ -1,0 +1,77 @@
+---
+title: 'Introduction'
+description: 'What the Visibility Suite API covers, the base URL, and how the endpoint reference is organized.'
+---
+
+The Visibility Suite API is the same REST API that powers the Visibility Suite app. Everything you can see in the dashboard is available here: AI visibility monitoring runs, analytics, projects, prompts, citations, sentiment, opportunities, content insights, and billing.
+
+## Base URL
+
+All endpoints are served over HTTPS from a single base URL:
+
+```bash
+https://api.visibilitysuite.ai/api/v1
+```
+
+## JSON everywhere
+
+Every request and response body is JSON. Send a `Content-Type: application/json` header on requests with a body, and expect `application/json` back, including for errors.
+
+## Access requires a paid plan
+
+API access is gated on a paid plan. If your organization is on the free plan, API calls return `403` with a `feature_required` error code. You can manage your subscription through the [billing endpoints](/api-reference/errors#plan-and-feature-gate-errors) or in the app.
+
+## Authentication
+
+Every request (except a small set of public endpoints) needs a Clerk session token in the `Authorization` header. See [Authentication](/api-reference/authentication) for how to get a token and what error responses look like.
+
+## Your first request
+
+The snippet below asks the API who you are. Replace `YOUR_SESSION_TOKEN` with a real session token:
+
+```bash
+curl https://api.visibilitysuite.ai/api/v1/session/me \
+  -H "Authorization: Bearer YOUR_SESSION_TOKEN"
+```
+
+A successful response looks like this:
+
+```json
+{
+  "user": {
+    "id": "usr_2f9c1a7b3d4e",
+    "email": "jane@acmeplumbing.com",
+    "name": "Jane Rivera",
+    "role": "user",
+    "banned": false,
+    "bannedReason": null
+  },
+  "session": {
+    "id": "sess_2nGz8kQ1pVwXyZ",
+    "userId": "usr_2f9c1a7b3d4e"
+  }
+}
+```
+
+## How the reference is organized
+
+The endpoint pages in this section auto-generate from the OpenAPI spec and are grouped by product area, matching the app's structure:
+
+- **Session, Organizations, Projects** for account setup and org management
+- **Prompts, Topics, Brands** for what you monitor
+- **Monitoring** for triggering and listing runs
+- **Analytics, Answer Engine, Citations, Sentiment** for visibility data
+- **Opportunities, Content, Content Recommendations** for optimization
+- **Billing, Platforms, Notifications** for plan and platform metadata
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+    Get a session token and authenticate your requests.
+  </Card>
+  <Card title="Errors" icon="triangle-exclamation" href="/api-reference/errors">
+    The error envelope, status codes, and validation responses.
+  </Card>
+  <Card title="Rate limits" icon="gauge-high" href="/api-reference/rate-limits">
+    How limits work and how to retry safely.
+  </Card>
+</CardGroup>

@@ -1,0 +1,81 @@
+---
+title: 'Errors'
+description: 'The error response envelope, the status codes the API returns, and how to handle validation and plan errors.'
+---
+
+Every error response is JSON with a consistent envelope: an `error` field containing a human-readable message. Depending on the failure, the body may also include a machine-readable `code`, a `hint`, or structured `details`:
+
+```json
+{
+  "error": "Not found"
+}
+```
+
+Program against `code` and the HTTP status, not the `error` message text.
+
+## Status codes
+
+The API uses these status codes:
+
+| Status | Meaning |
+| --- | --- |
+| `400` | Bad request or validation failure. Includes `org_required` when an endpoint needs an active organization. |
+| `401` | Missing, expired, or invalid session token. See [Authentication](/api-reference/authentication). |
+| `403` | Authenticated but not allowed: not an org member (`org_forbidden`), member write attempt (`member_read_only`), or a feature your plan does not include (`feature_required`). |
+| `404` | The org, project, or resource does not exist. |
+| `429` | Rate limit exceeded. See [Rate limits](/api-reference/rate-limits). |
+| `500` | Unexpected server error. Safe to retry after a short wait. |
+
+The API does not currently return `402`, `409`, or `422`.
+
+## Plan and feature gate errors
+
+API access and several product areas require a paid plan. When billing is enforced and your organization's plan does not include the feature, you get `403` with a `feature_required` code:
+
+```json
+{
+  "error": "This feature requires a paid plan",
+  "code": "feature_required",
+  "feature": "api_access"
+}
+```
+
+The `feature` field names the gated capability (for example `api_access`, `opportunities`, or `content_recommendations`). Handle this by surfacing an upgrade prompt, not by retrying.
+
+## Validation errors
+
+When a request body, query parameter, or path parameter fails schema validation, the API returns `400` with a `details` array. Each entry points at the offending field:
+
+```json
+{
+  "error": "Validation error",
+  "details": [
+    {
+      "path": "prompts.0.text",
+      "message": "String must contain at least 1 character(s)"
+    },
+    {
+      "path": "platform",
+      "message": "Invalid enum value"
+    }
+  ]
+}
+```
+
+The `path` uses dot notation into the request payload, and `message` describes the constraint. To handle these well:
+
+1. Log the full `details` array during development; it tells you exactly what to fix.
+2. In user-facing integrations, map `path` back to your form fields and show `message` inline.
+3. Do not retry a `400` without changing the request.
+
+## Server errors
+
+An unhandled failure returns `500` with a minimal body:
+
+```json
+{
+  "error": "Internal server error"
+}
+```
+
+Retry once after a few seconds. If it persists, contact support with the endpoint, request body, and approximate time of the call.

@@ -1,53 +1,321 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Visibility Suite",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#286cf0",
+    "light": "#5a90f7",
+    "dark": "#1c56c9"
   },
-  "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "light"
+  },
+  "fonts": {
+    "family": "Inter",
+    "weight": 400
+  },
+  "favicon": "/favicon.png",
+  "logo": {
+    "light": "/logo/visibility-suite.png",
+    "dark": "/logo/visibility-suite.png",
+    "href": "https://visibilitysuite.ai"
+  },
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Getting Started",
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get started",
+            "icon": "rocket",
+            "pages": [
+              "index",
+              "quickstart",
+              "concepts",
+              "glossary"
+            ]
+          },
+          {
+            "group": "Set up",
+            "icon": "sliders",
+            "pages": [
+              "setup/onboarding-wizard",
+              "setup/brands-and-competitors",
+              "setup/topics-and-prompts",
+              "setup/schedules",
+              "setup/multi-location"
+            ]
+          },
+          {
+            "group": "Understand your results",
+            "icon": "chart-line",
+            "pages": [
+              "insights/overview",
+              "insights/citations",
+              "insights/sentiment",
+              "insights/competitive-analysis",
+              "insights/serp-radar",
+              "insights/ads-monitoring"
+            ]
+          },
+          {
+            "group": "Improve your visibility",
+            "icon": "wand-magic-sparkles",
+            "pages": [
+              "optimize/opportunities",
+              "optimize/content-recommendations",
+              "optimize/content-studio",
+              "optimize/mcp-publishing",
+              "optimize/agent-readiness"
+            ]
+          },
+          {
+            "group": "Account and billing",
+            "icon": "building",
+            "pages": [
+              "account/plans-and-billing",
+              "account/organizations-and-roles",
+              "account/notifications",
+              "account/data-and-exports"
+            ]
+          },
+          {
+            "group": "Help",
+            "icon": "circle-question",
+            "pages": [
+              "help/faq",
+              "help/troubleshooting",
+              "help/support"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API reference",
+        "openapi": "/openapi.json",
+        "groups": [
+          {
+            "group": "Overview",
+            "icon": "code",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/errors",
+              "api-reference/rate-limits"
+            ]
+          },
+          {
+            "group": "Session",
+            "pages": [
+              "GET /api/v1/session/me"
+            ]
+          },
+          {
+            "group": "Platforms",
+            "pages": [
+              "GET /api/v1/platforms",
+              "GET /api/v1/platforms/countries"
+            ]
+          },
+          {
+            "group": "Organizations",
+            "pages": [
+              "GET /api/v1/orgs",
+              "POST /api/v1/orgs",
+              "GET /api/v1/orgs/{orgId}",
+              "GET /api/v1/orgs/{orgId}/members"
+            ]
+          },
+          {
+            "group": "Projects",
+            "pages": [
+              "GET /api/v1/orgs/{orgId}/projects",
+              "POST /api/v1/orgs/{orgId}/projects",
+              "POST /api/v1/orgs/{orgId}/projects/draft",
+              "POST /api/v1/orgs/{orgId}/projects/setup",
+              "DELETE /api/v1/orgs/{orgId}/projects/{projectId}",
+              "GET /api/v1/orgs/{orgId}/projects/{projectId}",
+              "PATCH /api/v1/orgs/{orgId}/projects/{projectId}"
+            ]
+          },
+          {
+            "group": "Topics",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/topics",
+              "POST /api/v1/projects/{projectId}/topics"
+            ]
+          },
+          {
+            "group": "Prompts",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/prompts",
+              "POST /api/v1/projects/{projectId}/prompts",
+              "POST /api/v1/projects/{projectId}/prompts/bulk",
+              "PATCH /api/v1/projects/{projectId}/prompts/{promptId}"
+            ]
+          },
+          {
+            "group": "Prompt Details",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/prompt-details/mentions/{brandId}",
+              "GET /api/v1/projects/{projectId}/prompt-details/{promptId}/analytics",
+              "GET /api/v1/projects/{projectId}/prompt-details/{promptId}/chats",
+              "GET /api/v1/projects/{projectId}/prompt-details/{promptId}/domains",
+              "GET /api/v1/projects/{projectId}/prompt-details/{promptId}/fanout",
+              "GET /api/v1/projects/{projectId}/prompt-details/{promptId}/rankings",
+              "GET /api/v1/projects/{projectId}/prompt-details/{promptId}/visibility"
+            ]
+          },
+          {
+            "group": "Monitoring",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/monitoring/runs",
+              "GET /api/v1/projects/{projectId}/monitoring/runs/{runId}",
+              "GET /api/v1/projects/{projectId}/monitoring/schedule",
+              "PUT /api/v1/projects/{projectId}/monitoring/schedule",
+              "POST /api/v1/projects/{projectId}/monitoring/trigger"
+            ]
+          },
+          {
+            "group": "Analytics",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/analytics/leaderboard",
+              "GET /api/v1/projects/{projectId}/analytics/mention-heatmap",
+              "GET /api/v1/projects/{projectId}/analytics/overview",
+              "GET /api/v1/projects/{projectId}/analytics/platform-breakdown",
+              "GET /api/v1/projects/{projectId}/analytics/visibility-trend"
+            ]
+          },
+          {
+            "group": "Answer Engine",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/answer-engine/citation-sources",
+              "GET /api/v1/projects/{projectId}/answer-engine/platform-trend",
+              "GET /api/v1/projects/{projectId}/answer-engine/prompt-performance",
+              "GET /api/v1/projects/{projectId}/answer-engine/prompts/:promptId/drill",
+              "GET /api/v1/projects/{projectId}/answer-engine/share-of-voice",
+              "GET /api/v1/projects/{projectId}/answer-engine/stats"
+            ]
+          },
+          {
+            "group": "Sentiment",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/sentiment/brands",
+              "GET /api/v1/projects/{projectId}/sentiment/by-platform",
+              "GET /api/v1/projects/{projectId}/sentiment/drawer",
+              "GET /api/v1/projects/{projectId}/sentiment/overview",
+              "GET /api/v1/projects/{projectId}/sentiment/trend"
+            ]
+          },
+          {
+            "group": "Citations",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/citations/domains",
+              "GET /api/v1/projects/{projectId}/citations/summary"
+            ]
+          },
+          {
+            "group": "Brands",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/brands",
+              "POST /api/v1/projects/{projectId}/brands",
+              "DELETE /api/v1/projects/{projectId}/brands/{brandId}",
+              "PATCH /api/v1/projects/{projectId}/brands/{brandId}",
+              "POST /api/v1/projects/{projectId}/brands/{brandId}/track",
+              "POST /api/v1/projects/{projectId}/brands/{brandId}/untrack"
+            ]
+          },
+          {
+            "group": "Brand Knowledge",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/brand-knowledge",
+              "PUT /api/v1/projects/{projectId}/brand-knowledge",
+              "GET /api/v1/projects/{projectId}/brand-knowledge/discovered",
+              "POST /api/v1/projects/{projectId}/brand-knowledge/discovered/{brandId}/demote",
+              "POST /api/v1/projects/{projectId}/brand-knowledge/discovered/{brandId}/merge",
+              "POST /api/v1/projects/{projectId}/brand-knowledge/discovered/{brandId}/promote"
+            ]
+          },
+          {
+            "group": "Content",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/content/never-cited",
+              "GET /api/v1/projects/{projectId}/content/page-type-breakdown",
+              "GET /api/v1/projects/{projectId}/content/pages",
+              "GET /api/v1/projects/{projectId}/content/stats",
+              "GET /api/v1/projects/{projectId}/content/type-performance"
+            ]
+          },
+          {
+            "group": "Content Recommendations",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/content-recommendations",
+              "POST /api/v1/projects/{projectId}/content-recommendations",
+              "GET /api/v1/projects/{projectId}/content-recommendations/status"
+            ]
+          },
+          {
+            "group": "Opportunities",
+            "pages": [
+              "GET /api/v1/projects/{projectId}/opportunities",
+              "POST /api/v1/projects/{projectId}/opportunities",
+              "GET /api/v1/projects/{projectId}/opportunities/status",
+              "PATCH /api/v1/projects/{projectId}/opportunities/{opportunityId}/state"
+            ]
+          },
+          {
+            "group": "Cross-Location",
+            "pages": [
+              "GET /api/v1/orgs/{orgId}/cross-location"
+            ]
+          },
+          {
+            "group": "Notifications",
+            "pages": [
+              "GET /api/v1/notifications",
+              "GET /api/v1/notifications/count",
+              "POST /api/v1/notifications/{id}/read"
+            ]
+          },
+          {
+            "group": "Billing",
+            "pages": [
+              "POST /api/v1/billing/orgs/{orgId}/addons/decrease",
+              "POST /api/v1/billing/orgs/{orgId}/addons/project-slot",
+              "POST /api/v1/billing/orgs/{orgId}/addons/run-pack",
+              "POST /api/v1/billing/orgs/{orgId}/cancel",
+              "POST /api/v1/billing/orgs/{orgId}/checkout",
+              "GET /api/v1/billing/orgs/{orgId}/invoices",
+              "GET /api/v1/billing/orgs/{orgId}/portal",
+              "GET /api/v1/billing/orgs/{orgId}/subscription",
+              "GET /api/v1/billing/plans"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
         "pages": [
-          "index",
-          "quickstart"
+          "changelog"
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    ]
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Website",
+        "href": "https://visibilitysuite.ai"
+      },
+      {
+        "label": "Sign in",
+        "href": "https://app.visibilitysuite.ai"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Start free",
+      "href": "https://app.visibilitysuite.ai/sign-up"
     }
   },
   "contextual": {
@@ -56,17 +324,13 @@
       "view",
       "chatgpt",
       "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "perplexity"
     ]
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    "socials": {}
+  },
+  "seo": {
+    "indexing": "all"
   }
 }

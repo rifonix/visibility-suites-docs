@@ -1,0 +1,59 @@
+---
+title: "Schedules and runs"
+description: "How monitoring runs work, how to change your cadence, and how run usage is counted."
+---
+
+A run is one prompt asked once on one AI platform. If you track 20 prompts on 5 platforms, one monitoring cycle is 100 runs. Runs are the unit your plan measures: your monthly plan includes a run allowance shared across all projects in your workspace, and you can top up with run packs.
+
+## The default rhythm
+
+New projects monitor weekly. Higher plans support faster cadences: twice per week, every two days, or daily. Google search results are captured alongside AI answers, so SERP Radar updates on the same rhythm.
+
+## Changing your schedule
+
+<Steps>
+  <Step title="Open Settings">
+    In your project, go to Settings and find "Monitoring schedule".
+  </Step>
+  <Step title="Pick a frequency and time">
+    Choose how often to run and the time of day. Times are set in UTC, so convert from your local timezone. The screen shows your next run time so you can confirm before saving.
+  </Step>
+  <Step title="Save">
+    Select "Save schedule". The new cadence applies from the next run onward.
+  </Step>
+</Steps>
+
+You can also trigger a one-off run anytime with "Run now", once your project is active.
+
+## What happens during a run
+
+Each run asks every active prompt on every selected platform and saves the full answers, plus the citations, map entries, ads, and search results behind them. While a run is in progress, the Overview page shows a banner and results stream in as platforms report back. A run finishes with a status of completed, partial, or failed. Partial means some platform or prompt did not return; the rest of your data is still usable.
+
+## When results appear
+
+Metrics appear as soon as results arrive, and the dashboard compares your most recent run against the first run in your selected date range. AI answers vary from day to day, so judge trends over two to three runs rather than any single result.
+
+## Priority prompts
+
+Your schedule keeps a list of priority prompts: the pinned questions that matter most. Pin your highest-value questions here so they stay marked as priorities in every cycle, and manage the list from your schedule settings.
+
+## How changes affect run usage
+
+Your monthly usage estimate is simple math: prompts × platforms × runs per month. That means:
+
+- Adding a platform multiplies every cycle's run count.
+- Adding prompts adds one run per platform per cycle.
+- Speeding up the cadence multiplies monthly usage.
+
+Settings shows a forecast for your active projects so you can see the impact before you save. If the forecast exceeds your allowance, add a run pack or trim platforms or prompts.
+
+## What to read next
+
+<CardGroup cols={2}>
+  <Card title="Plans and billing" icon="credit-card" href="/account/plans-and-billing">
+    Run allowances, overage, and run packs explained.
+  </Card>
+  <Card title="Topics and prompts" icon="message-question" href="/setup/topics-and-prompts">
+    Manage the questions your schedule runs.
+  </Card>
+</CardGroup>
