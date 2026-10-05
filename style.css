@@ -1,6 +1,11 @@
 /* Visibility Suite docs customizations */
 
-/* Show the product name next to the logo icon in the header. */
+/* Show the product name next to the logo icon in the header, horizontally aligned. */
+a.select-none:has(> img.nav-logo) {
+  display: inline-flex;
+  align-items: center;
+}
+
 a.select-none:has(> img.nav-logo)::after {
   content: "Visibility Suite";
   margin-left: 0.625rem;
