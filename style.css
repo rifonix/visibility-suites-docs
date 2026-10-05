@@ -1,0 +1,21 @@
+/* Visibility Suite docs customizations */
+
+/* Show the product name next to the logo icon in the header. */
+a.select-none:has(> img.nav-logo)::after {
+  content: "Visibility Suite";
+  margin-left: 0.625rem;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.dark a.select-none:has(> img.nav-logo)::after {
+  color: #f1f5f9;
+}
+
+/* Hide the docs footer. */
+#footer {
+  display: none !important;
+}
