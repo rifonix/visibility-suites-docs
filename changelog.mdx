@@ -3,7 +3,7 @@ title: "Changelog"
 description: "New features, improvements, and fixes in Visibility Suite."
 ---
 
-<Update label="October 2026" description="Public launch" tags={["Launch"]}>
+<Update label="v2.0.0" description="October 2026" tags={["Launch"]}>
   Visibility Suite is publicly available. The launch includes:
 
   - **AI visibility monitoring** across ChatGPT, Gemini, Perplexity, Microsoft Copilot, Grok, Google AI Overview, and Google AI Mode, on weekly or daily schedules
@@ -19,6 +19,174 @@ description: "New features, improvements, and fixes in Visibility Suite."
   - **Multi-location support**: subfolder tracking, per-location projects, and cross-location org reports
   - **REST API** covering monitoring, analytics, and project management
   - **Plans for local businesses**: free tier, Launch at $29/mo, Grow at $49/mo, Scale at $99/mo, with run packs for one-time top-ups
+</Update>
+
+<Update label="v1.14.1" description="September 28, 2026" tags={["Improvement", "Fix"]}>
+  - Redesigned the sentiment and mention analysis pipeline to be evidence-first, so every sentiment score links to the exact sentences behind it
+  - Stabilized media uploads in Content Studio and unified the AI assistant across the content editor
+  - Fixed: media upload failures on slow connections no longer lose editor drafts
+</Update>
+
+<Update label="v1.14.0" description="September 20, 2026" tags={["Feature"]}>
+  - **Competitive analysis cockpit**: a rebuilt view with prompt battlegrounds, rival scorecards, and scoped competitive citations
+  - **Format battleground heatmap**: see which content formats win AI answers for each topic you track
+  - **Content Studio rebuilt**: grounded AI streaming with publishing to your CMS over MCP connections, plus a mailbox-style editor
+  - Opportunity generation is now grounded in your market context, so suggested tasks reference your actual competitors and prompts
+  - Agent readiness history now shows weighted grades over time
+</Update>
+
+<Update label="v1.13.1" description="September 19, 2026" tags={["Improvement", "Fix"]}>
+  - Agent readiness scoring is now standardized and weighted, so grades compare fairly across scans
+  - Clarified SERP Radar compsets and repaired subfolder queries that missed nested pages
+  - Fixed: SERP Radar organic aggregation double-counting some results
+  - Fixed: restored subfolder citation matching for multi-location projects
+</Update>
+
+<Update label="v1.13.0" description="September 11, 2026" tags={["Feature"]}>
+  - **SERP Radar**: Google rankings, map pack, people-also-ask, and related searches tracked alongside your AI visibility, with a search-to-AI alignment map
+  - **Subfolder targeting**: track individual locations or sections of one shared website as separate targets
+  - Insights refined to focus on the ranking and citation gaps that matter most
+</Update>
+
+<Update label="v1.12.1" description="August 31, 2026" tags={["Improvement"]}>
+  - Onboarding overhaul: Exa-powered brand profiling with an LLM fallback, so the wizard understands your business from just your website URL
+  - Audience segments are now ordered priority rows instead of percentages, and they feed topic and prompt generation
+  - Added a review step, up to 10 competitors, and a Save progress button on every step of the wizard
+</Update>
+
+<Update label="v1.12.0" description="August 29, 2026" tags={["Feature", "Fix"]}>
+  - Split the Optimization section into dedicated **Agent Readiness**, **Opportunities**, and **Competitive Analysis** pages
+  - Expanded the page-type taxonomy from 15 to 47 types, including hotels, restaurants, venues, and other local-business pages
+  - Redesigned the ads page with brand accordions, per-prompt ad show rates, and source badges
+  - Fixed: monitoring workflows now respect a capture-slot budget and retry partial runs instead of stalling
+  - Fixed: adding a discovered brand manually no longer returns a 500 error
+</Update>
+
+<Update label="v1.11.0" description="August 13, 2026" tags={["Feature"]}>
+  - **Content Studio and Content recommendations**: draft articles from your visibility gaps, with a drawer-based editor and a suggestions panel
+  - **Agent readiness scanner**: grades how readable your website is to AI crawlers, with a fix list per issue
+  - **Org roles**: view-only access is now enforced for org members who should not edit
+  - Fixed: the scanner now reuses an in-progress scan instead of failing with a conflict
+</Update>
+
+<Update label="v1.10.1" description="August 9, 2026" tags={["Improvement", "Fix"]}>
+  - Added an Export CSV button to the projects list
+  - Fixed: onboarding no longer enables reasoning mode on the flash model, which caused slow or failed brand analysis
+</Update>
+
+<Update label="v1.10.0" description="August 7, 2026" tags={["Feature", "Improvement"]}>
+  - **Prompt archiving**: archive prompts you no longer track, with archived and paused prompts excluded from the active list
+  - Richer CSV exports for prompts, including topic and platform context
+  - Improved AI prompt generation with sibling-topic context, plus fixes to pausing and platform icons
+  - Fixed: platform cards on the overview now auto-scale their row heights based on platform count
+</Update>
+
+<Update label="v1.9.1" description="July 28, 2026" tags={["Improvement", "Fix"]}>
+  - Redesigned the onboarding shell and fixed horizontal overflow on the brand step
+  - Restored vertical scrolling with a dot-matrix brand preview during setup
+  - Temporarily paused Grok in platform selection while capture reliability was being improved
+</Update>
+
+<Update label="v1.9.0" description="July 27, 2026" tags={["Feature", "Improvement"]}>
+  - Redesigned the public AI ads exposure report with accordions and per-advertiser detail
+  - Brand Hub: track or dismiss discovered brands right from the Discovered tab
+  - Redesigned the project switcher dropdown and fixed its search
+  - Added project tag filters and tracked-brand management for admins
+</Update>
+
+<Update label="v1.8.1" description="July 23, 2026" tags={["Improvement"]}>
+  - Upgraded the onboarding model and system prompts, so suggested topics, competitors, and prompts are more accurate for your market
+  - Fixed a layout issue on the onboarding review step
+</Update>
+
+<Update label="v1.8.0" description="July 6, 2026" tags={["Improvement", "Fix"]}>
+  - Unified sentiment display to a single 0 to 100 index across every page
+  - Platform breakdown is now run-scoped, with sentence-level mentions that match the sentiment you see on the dashboard
+  - Fixed: last-run KPIs could disagree with the mentions table for the same run
+</Update>
+
+<Update label="v1.7.1" description="June 18, 2026" tags={["Improvement"]}>
+  - Added a demo workspace so new users can explore a filled-in project before connecting their own
+  - Monitoring now tracks token cost per run, with automatic model fallback if a provider is unavailable
+  - Hardened the monitoring client and scrubbed legacy configuration
+</Update>
+
+<Update label="v1.7.0" description="June 16, 2026" tags={["Improvement"]}>
+  - Standardized layouts, animations, and sorting across all monitoring pages
+  - Redesigned prompt details with a sentiment mix card and unified loading skeletons instead of spinners
+  - Redesigned sentiment platform and brand detail pages, with clickable mention drawers
+  - Fixed: score dilution in prompt-level sentiment averages
+</Update>
+
+<Update label="v1.6.1" description="June 15, 2026" tags={["Improvement", "Fix"]}>
+  - Project selector dropdowns now include search and brand favicons
+  - PDF exports now match the desktop dashboard layout, with icons rendered correctly
+  - Fixed: monitoring runs no longer get stuck in a running state or finish partially
+  - Fixed: citation favicons now load for authenticated raw captures
+</Update>
+
+<Update label="v1.6.0" description="June 10, 2026" tags={["Fix", "Improvement"]}>
+  - Fixed sign-in reliability: resolved token refresh storms and duplicate one-time codes during sign-in
+  - Fixed organization sync issues that could show a 403 after switching orgs
+  - Improved the org dashboard project table with clearer per-project status
+</Update>
+
+<Update label="v1.5.0" description="May 19, 2026" tags={["Feature", "Improvement"]}>
+  - **Brand Hub profile tab**: edit your brand details inline, with changes feeding future analysis
+  - **PDF export**: download any dashboard view as a branded PDF report
+  - Redesigned stat cards with baseline comparison, and a data-aware date filter that only offers ranges where you have data
+  - Fixed: Brand Mentions KPI now uses sentence-level totals, consistent with the mentions table
+</Update>
+
+<Update label="v1.4.1" description="May 15, 2026" tags={["Improvement", "Fix"]}>
+  - Monitoring capture moved to a webhook-driven pipeline, with platform health tracking and faster run completion
+  - Fixed: brand name matching is now normalized on every insert and update path, so mentions match more reliably
+  - Fixed: cross-origin errors when the app was opened from a non-allowlisted domain
+</Update>
+
+<Update label="v1.4.0" description="May 6, 2026" tags={["Feature"]}>
+  - **Citations intelligence**: see which domains AI trusts in your market, scoped to your brand and subfolders, with hover previews of each source
+  - Prompt details now include own-brand KPIs and multi-run answer history
+  - Added pagination to top positive, top negative, and recent mentions
+</Update>
+
+<Update label="v1.3.1" description="May 7, 2026" tags={["Fix", "Improvement"]}>
+  - Fixed: sign-out now completes reliably from every menu
+  - Fixed: dates displayed inconsistently across analytics pages
+  - Improved the brand sentiment page with KPI comparisons and a compact platform sidebar
+</Update>
+
+<Update label="v1.3.0" description="May 4, 2026" tags={["Feature"]}>
+  - **New onboarding**: a full-screen wizard with an organization dashboard and draft projects
+  - **AI-suggested topics and prompts**, with competitor suggestions grounded in live AI answers
+  - Added Grok as a monitored platform
+  - Redesigned the overview dashboard with topic-aware analytics and a mention heatmap
+  - Fixed: analytics date filters now include the full selected range
+</Update>
+
+<Update label="v1.2.0" description="April 28, 2026" tags={["Improvement"]}>
+  - Revamped the overview and prompts visuals, including chart styling and card layout
+  - Project sidebar navigation now follows a single, predictable structure across pages
+</Update>
+
+<Update label="v1.1.1" description="April 22, 2026" tags={["Fix", "Improvement"]}>
+  - Fixed citation URLs, own-brand matching, and platform chart labels
+  - Analytics are now scoped to tracked brands only, with info tooltips explaining each metric
+</Update>
+
+<Update label="v1.1.0" description="April 19, 2026" tags={["Feature"]}>
+  - **Run-based billing**: organization-pooled AI run quota with per-project add-ons
+  - Organization-scoped subscriptions with invoice history
+  - Onboarding now caps prompts at 5 to 7 per topic for cleaner tracking
+</Update>
+
+<Update label="v1.0.0" description="April 13, 2026" tags={["Beta"]}>
+  First private beta of Visibility Suite:
+
+  - Project dashboard with filterable monitoring data
+  - Weekly AI monitoring runs across the first supported platforms
+  - Brand and competitor tracking with mention detection
+  - The onboarding wizard, first version
 </Update>
 
 <Note>
