@@ -5,13 +5,13 @@ description: "New features, improvements, and fixes in Visibility Suite."
 
 <Update label="v2.1.0" description="October 23, 2026" tags={["Feature", "Improvement", "Fix"]}>
   - **Topics and questions are one onboarding step**: the AI suggests up to 10 market-level topics and writes about five questions for each one. Every topic supports add, edit, remove, and per-topic AI regeneration, and Back/forward navigation no longer regenerates anything.
-  - **More reliable, less brand-biased generation**: onboarding now uses `deepseek/deepseek-v4.1-flash-1017`, targets exact topic and question counts with server-side top-ups, and stops sending your brand name or marketing claims to the topic/question model. Questions must be answerable by several businesses in your market.
+  - **More reliable, less brand-biased generation**: onboarding now uses a more capable LLM model, targets exact topic and question counts with server-side top-ups, and stops sending your brand name or marketing claims to the topic/question model. Questions must be answerable by several businesses in your market.
+  - **Decision API and reanalysis**: monitoring decisions now run through a dedicated decision API that batches answer classification, making analysis faster and more consistent. Reanalysis can be rerun for selected projects and date ranges without recapturing answers.
+  - **Better brand detection**: mention matching now handles chain-hotel name variants without fuzzy-match false positives, so multi-property brands are counted accurately.
   - **Smart tracking scope**: a deep brand URL such as a hotel or product page defaults to **Subfolder only**; root URLs, including `www`, non-`www`, and subdomains, default to **Full domain**. Choosing Full domain for a deep URL shows a warning. `www` and non-`www` versions of the same path are equivalent.
   - **Cleaner setup steps**: Step 1 is grouped into Business, Market, and Brand names; Step 2 is grouped into Overview, Offerings, and Audiences. Long product, tag, theme, and alias chips now wrap instead of overflowing.
   - **Existing hotel projects corrected**: 24 chain-brand hotel projects that had hotel-page URLs but were tracking the full domain were moved to subfolder tracking (Marriott 8, Hyatt 8, Hilton 5, IHG 3).
   - **Docs and API reference**: the wizard guide, multi-location guide, and API reference now cover the 6-step flow, tracking-scope rules, async brand research, ordered audiences, exact-count generation, and the batch question endpoint.
-
-  Release commits: [`f79657b`](https://github.com/rifonix/ai-visibility/commit/f79657b), [`1edfae1`](https://github.com/rifonix/ai-visibility/commit/1edfae1), [`a65cd75`](https://github.com/rifonix/ai-visibility/commit/a65cd75).
 </Update>
 
 <Update label="v2.0.0" description="October 2026" tags={["Launch"]}>
@@ -29,7 +29,7 @@ description: "New features, improvements, and fixes in Visibility Suite."
   - **Ads monitoring**: detect ads inside AI answers and share a public AI ads exposure report
   - **Multi-location support**: subfolder tracking, per-location projects, and cross-location org reports
   - **REST API** covering monitoring, analytics, and project management
-  - **Plans for local businesses**: free tier, Launch at $29/mo, Grow at $49/mo, Scale at $99/mo, with run packs for one-time top-ups
+  - **Plans for local businesses**: Free Setup ($0), Starter ($39/mo, or $29/mo billed annually), Pro ($149/mo, or $117/mo billed annually), Business ($399/mo, or $319/mo billed annually), and Agency ($1,199/mo, or $999/mo billed annually), with prompt packs, project slots, and run overage billing. Starter and Pro include a 7-day trial, and every plan includes unlimited team seats.
 </Update>
 
 <Update label="v1.14.1" description="September 28, 2026" tags={["Improvement", "Fix"]}>
@@ -60,7 +60,7 @@ description: "New features, improvements, and fixes in Visibility Suite."
 </Update>
 
 <Update label="v1.12.1" description="August 31, 2026" tags={["Improvement"]}>
-  - Onboarding overhaul: Exa-powered brand profiling with an LLM fallback, so the wizard understands your business from just your website URL
+  - Onboarding overhaul: web-grounded brand profiling with an AI fallback, so the wizard understands your business from just your website URL
   - Audience segments are now ordered priority rows instead of percentages, and they feed topic and prompt generation
   - Added a review step, up to 10 competitors, and a Save progress button on every step of the wizard
 </Update>

@@ -1,30 +1,30 @@
 ---
 title: 'Authentication'
-description: 'Authenticate API requests with a Clerk session token in the Authorization Bearer header.'
+description: 'Authenticate API requests with a session token in the Authorization Bearer header.'
 ---
 
-Visibility Suite uses [Clerk](https://clerk.com) for identity. Every API request must carry a Clerk session token as a Bearer token in the `Authorization` header:
+Visibility Suite uses its identity provider for sign-in. Every API request must carry a session token as a Bearer token in the `Authorization` header:
 
 ```bash
 Authorization: Bearer YOUR_SESSION_TOKEN
 ```
 
-The server verifies the token against Clerk on every request, then maps it to your Visibility Suite user. No API keys, no basic auth.
+The server verifies the token on every request, then maps it to your Visibility Suite user. No API keys, no basic auth.
 
 ## Getting a session token
 
-Sign in to the Visibility Suite app first. The token the API expects is the session token Clerk issues for your signed-in session:
+Sign in to the Visibility Suite app first. The token the API expects is the session token issued for your signed-in session:
 
-- In a frontend using the Clerk SDK, call `getToken()` on the active session and use the returned JWT.
-- For scripts and server jobs, sign in to the app, then copy the session token from the Clerk session (for example from your browser's network tab on any authenticated app request, or via the Clerk SDK in a small helper script).
+- In a frontend using the auth SDK, request a fresh session token from the active session and use the returned JWT.
+- For scripts and server jobs, sign in to the app, then copy the session token from an authenticated request in your browser's network tab, or request one through the auth SDK in a small helper script.
 
-Session tokens are short-lived. Fetch a fresh token from the active Clerk session instead of caching one for long-running jobs, and handle `401` responses by getting a new token and retrying once.
+Session tokens are short-lived. Fetch a fresh token from the active session instead of caching one for long-running jobs, and handle `401` responses by getting a new token and retrying once.
 
 ## Organization context
 
-Most endpoints are scoped to an organization or a project through the URL, for example `/orgs/{orgId}/projects` or `/projects/{projectId}/prompts`. There is no org header to set; the org comes from the path. The `{orgId}` parameter accepts either the Visibility Suite org id or the Clerk org id.
+Most endpoints are scoped to an organization or a project through the URL, for example `/orgs/{orgId}/projects` or `/projects/{projectId}/prompts`. There is no org header to set; the org comes from the path. The `{orgId}` parameter accepts either the Visibility Suite org id or the identity provider's org id.
 
-Authorization is based on org membership. If your Clerk session has the matching active organization, your membership syncs automatically on the first request. Role rules:
+Authorization is based on org membership. If your active session has the matching organization, your membership syncs automatically on the first request. Role rules:
 
 - **Owners and admins** can read and write.
 - **Members** get read-only access. Write requests (`POST`, `PUT`, `PATCH`, `DELETE`) return `403` with code `member_read_only`.
@@ -44,14 +44,7 @@ A missing or malformed header returns `401`:
 }
 ```
 
-An expired or invalid token also returns `401`, with code `clerk_not_authenticated`:
-
-```json
-{
-  "error": "Unauthorized",
-  "code": "clerk_not_authenticated"
-}
-```
+An expired or invalid token also returns `401` with an authentication error code. Refresh the session token and retry once.
 
 Responses may include a human-readable `hint` field with remediation detail. If you are not a member of the org in the URL, you get `403` with code `org_forbidden` instead.
 

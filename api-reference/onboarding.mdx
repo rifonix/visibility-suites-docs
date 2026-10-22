@@ -7,13 +7,12 @@ The onboarding endpoints power the create-project wizard. They run AI analysis
 on your behalf and return structured JSON ready to feed into
 `POST /api/v1/orgs/{orgId}/projects/setup`.
 
-Generation runs on OpenRouter with `deepseek/deepseek-v4.1-flash-1017` as the
-primary model and `deepseek/deepseek-v4.1-flash` as the automatic fallback.
+Generation uses a more capable LLM model, with an automatic fallback model if
+the primary model is unavailable.
 
 <Note>
-  All onboarding endpoints require an authenticated Clerk session. They do not
-  require an active subscription, so trial and pre-purchase users can run the
-  wizard.
+  All onboarding endpoints require an authenticated session. They do not require
+  an active subscription, so trial and pre-purchase users can run the wizard.
 </Note>
 
 <Note>
@@ -22,7 +21,7 @@ primary model and `deepseek/deepseek-v4.1-flash` as the automatic fallback.
   - **Exact-count requests.** When `requestedCount` or `promptsPerTopic` is
     supplied, the backend asks for exactly that many and runs bounded top-up
     passes when the model replies short, using the rows it already has as an
-    avoid list. In normal operation the count matches; a degraded provider may
+    avoid list. In normal operation the count matches; a degraded model may
     return fewer rather than failing the request.
   - **Market-level, unbranded questions.** The brand name and marketing claims
     are not sent to the topic/question model. Questions must be answerable by
@@ -41,8 +40,8 @@ primary model and `deepseek/deepseek-v4.1-flash` as the automatic fallback.
 
 **POST** `/api/v1/onboarding/extract-website`
 
-Scrapes the main textual content of a URL via Exa. Used as the input to brand
-research and competitor search.
+Scrapes the main textual content of a URL using web extraction. Used as the
+input to brand research and competitor search.
 
 | Name | Type | In | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -67,9 +66,10 @@ curl -X POST https://api.visibilitysuite.ai/api/v1/onboarding/extract-website \
 
 **POST** `/api/v1/onboarding/describe-brand`
 
-Starts brand research. The backend checks a 7-day cache, then runs an Exa agent
-job. If the agent is unavailable, it falls back to a scrape plus structured LLM
-call. The result contains a brand profile and ordered audience segments.
+Starts brand research. The backend checks a 7-day cache, then runs a web
+research job. If that is unavailable, it falls back to a direct site scrape plus
+structured AI analysis. The result contains a brand profile and ordered audience
+segments.
 
 | Name | Type | In | Required | Description |
 | --- | --- | --- | --- | --- |

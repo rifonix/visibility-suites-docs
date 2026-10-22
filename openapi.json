@@ -13,7 +13,7 @@
         "type": "http",
         "scheme": "bearer",
         "bearerFormat": "JWT",
-        "description": "Clerk session token. Sign in to the Visibility Suite app and copy your session JWT to call the API directly."
+        "description": "Session token. Sign in to the Visibility Suite app and copy your session JWT to call the API directly."
       }
     }
   },
@@ -298,7 +298,7 @@
         "tags": [
           "Billing"
         ],
-        "summary": "Create polar checkout for an org plan (base subscription)",
+        "summary": "Create a billing checkout for an org plan (base subscription)",
         "parameters": [
           {
             "schema": {
@@ -934,7 +934,7 @@
         "tags": [
           "Billing"
         ],
-        "summary": "Polar customer portal session for an org",
+        "summary": "Create a customer portal session for an org",
         "parameters": [
           {
             "schema": {
