@@ -6,7 +6,202 @@
     "description": "REST API for the Visibility Suite platform: AI visibility monitoring, analytics, and optimization for local businesses."
   },
   "components": {
-    "schemas": {},
+    "schemas": {
+      "AudienceInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Audience name."
+          },
+          "description": {
+            "type": "string",
+            "description": "What this audience is looking for."
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "1 is the primary audience."
+          }
+        },
+        "required": [
+          "name",
+          "priority"
+        ]
+      },
+      "AudienceSegment": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "1 is the primary audience."
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "priority",
+          "enabled"
+        ]
+      },
+      "BrandProfile": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "What the business offers, who it serves, and where it operates."
+          },
+          "industry": {
+            "type": "string",
+            "description": "Best matching industry label."
+          },
+          "location": {
+            "type": "string",
+            "description": "Most specific market that can be supported."
+          },
+          "language": {
+            "type": "string",
+            "description": "Primary language of the business."
+          },
+          "productsServices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "brandIdentityTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "detectedThemes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contextNotes": {
+            "type": "string",
+            "description": "Short positioning and local-market notes."
+          }
+        },
+        "required": [
+          "description",
+          "industry",
+          "location",
+          "language",
+          "productsServices",
+          "brandIdentityTags",
+          "detectedThemes",
+          "contextNotes"
+        ]
+      },
+      "Topic": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Short topic name."
+          },
+          "description": {
+            "type": "string",
+            "description": "Which customer questions the topic covers."
+          }
+        },
+        "required": [
+          "name",
+          "description"
+        ]
+      },
+      "Prompt": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Question a customer would ask an AI assistant."
+          },
+          "estVolume": {
+            "type": "number",
+            "description": "Estimated monthly search volume."
+          },
+          "intent": {
+            "type": "string",
+            "enum": [
+              "informational",
+              "transactional",
+              "navigational",
+              "comparison"
+            ],
+            "description": "What the customer is trying to do."
+          }
+        },
+        "required": [
+          "text",
+          "estVolume",
+          "intent"
+        ]
+      },
+      "TopicPrompt": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "estVolume": {
+            "type": "number"
+          },
+          "intent": {
+            "type": "string",
+            "enum": [
+              "informational",
+              "transactional",
+              "navigational",
+              "comparison"
+            ]
+          },
+          "topicName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "estVolume",
+          "intent",
+          "topicName"
+        ]
+      },
+      "Competitor": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Short explanation of the competitive overlap."
+          }
+        },
+        "required": [
+          "name",
+          "url",
+          "reason"
+        ]
+      }
+    },
     "parameters": {},
     "securitySchemes": {
       "BearerAuth": {
@@ -7387,6 +7582,713 @@
                   },
                   "required": [
                     "ok"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding/extract-website": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "operationId": "onboardingExtractWebsite",
+        "summary": "Read a website",
+        "description": "Reads the main content of a website so the setup wizard can understand the business.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Website address to read."
+                  },
+                  "industry": {
+                    "type": "string",
+                    "description": "Optional industry hint."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Website content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "string",
+                      "description": "Main text found on the page."
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "The resolved website address."
+                    }
+                  },
+                  "required": [
+                    "content",
+                    "url"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding/describe-brand": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "operationId": "onboardingStartBrandResearch",
+        "summary": "Research a brand",
+        "description": "Starts brand research for a business. The response is either a completed profile or a job handle to poll for the result.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "businessName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Business name."
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Business website. A page inside the site is fine."
+                  },
+                  "industryHint": {
+                    "type": "string",
+                    "description": "Optional industry hint."
+                  },
+                  "variation": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 25,
+                    "description": "Increase to request a fresh profile."
+                  }
+                },
+                "required": [
+                  "businessName",
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A job handle or a completed brand profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "jobId": {
+                          "type": "string",
+                          "description": "Job handle for polling."
+                        }
+                      },
+                      "required": [
+                        "jobId"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "completed"
+                          ]
+                        },
+                        "describe": {
+                          "$ref": "#/components/schemas/BrandProfile"
+                        },
+                        "audienceSegments": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/AudienceSegment"
+                          }
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "describe",
+                        "audienceSegments"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding/describe-brand/status/{jobId}": {
+      "get": {
+        "tags": [
+          "Onboarding"
+        ],
+        "operationId": "onboardingGetBrandResearchStatus",
+        "summary": "Get brand research status",
+        "description": "Returns the current status of brand research. A completed response includes the brand profile and audience segments.",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Job handle returned by the brand research request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current status of brand research",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "running"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "completed"
+                          ]
+                        },
+                        "describe": {
+                          "$ref": "#/components/schemas/BrandProfile"
+                        },
+                        "audienceSegments": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/AudienceSegment"
+                          }
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "describe",
+                        "audienceSegments"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "failed"
+                          ]
+                        },
+                        "error": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "error"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding/topics": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "operationId": "onboardingSuggestTopics",
+        "summary": "Suggest topics",
+        "description": "Suggests market-level topics for the business. Topics group the questions customers ask AI.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "businessName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Business name."
+                  },
+                  "industry": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Industry label."
+                  },
+                  "location": {
+                    "type": "string",
+                    "description": "Market or location."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "What the business does."
+                  },
+                  "productsServices": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Products or services the business offers."
+                  },
+                  "requestedCount": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Number of distinct topics to aim for."
+                  },
+                  "audiences": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AudienceInput"
+                    },
+                    "maxItems": 10,
+                    "description": "Audience segments in priority order; the first is the primary audience."
+                  },
+                  "avoidTopics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 200
+                    },
+                    "maxItems": 30,
+                    "description": "Topic names a fresh result should not repeat."
+                  },
+                  "variation": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 25,
+                    "description": "Increase to request fresh topics."
+                  }
+                },
+                "required": [
+                  "businessName",
+                  "industry",
+                  "location",
+                  "description",
+                  "productsServices"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Suggested topics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "topics": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Topic"
+                      }
+                    }
+                  },
+                  "required": [
+                    "topics"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding/prompts": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "operationId": "onboardingGenerateQuestions",
+        "summary": "Generate questions for a topic",
+        "description": "Generates customer-style questions for one topic. Each question includes an estimated monthly search volume and an intent label.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "topicName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Topic to generate questions for."
+                  },
+                  "topicDescription": {
+                    "type": "string",
+                    "description": "Optional description of the topic."
+                  },
+                  "businessName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Business name."
+                  },
+                  "industry": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Industry label."
+                  },
+                  "location": {
+                    "type": "string",
+                    "description": "Market or location."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "What the business does."
+                  },
+                  "requestedCount": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Number of distinct questions to aim for."
+                  },
+                  "avoidTexts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Questions a fresh result should not repeat."
+                  },
+                  "siblingTopics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 30,
+                    "description": "Other topics being generated, so this request stays focused on its own topic."
+                  },
+                  "audiences": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AudienceInput"
+                    },
+                    "maxItems": 10,
+                    "description": "Audience segments in priority order."
+                  },
+                  "variation": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 25,
+                    "description": "Increase to request fresh questions."
+                  }
+                },
+                "required": [
+                  "topicName",
+                  "businessName",
+                  "industry",
+                  "location",
+                  "description"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Generated questions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "prompts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Prompt"
+                      }
+                    }
+                  },
+                  "required": [
+                    "prompts"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding/prompts/batch": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "operationId": "onboardingGenerateQuestionsBatch",
+        "summary": "Generate questions for several topics",
+        "description": "Generates customer-style questions for multiple topics in one request. Topics that could not be filled are listed in failedTopics.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "topics": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    },
+                    "description": "Topics to generate questions for."
+                  },
+                  "businessName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Business name."
+                  },
+                  "industry": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Industry label."
+                  },
+                  "location": {
+                    "type": "string",
+                    "description": "Market or location."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "What the business does."
+                  },
+                  "promptsPerTopic": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Number of questions to aim for per topic."
+                  },
+                  "audiences": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AudienceInput"
+                    },
+                    "maxItems": 10,
+                    "description": "Audience segments in priority order."
+                  },
+                  "variation": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 25,
+                    "description": "Increase to request fresh questions."
+                  }
+                },
+                "required": [
+                  "topics",
+                  "businessName",
+                  "industry",
+                  "location",
+                  "description"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Questions grouped by topic",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "prompts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TopicPrompt"
+                      }
+                    },
+                    "failedTopics": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Topics that still have no questions."
+                    }
+                  },
+                  "required": [
+                    "prompts",
+                    "failedTopics"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding/competitors": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "operationId": "onboardingSuggestCompetitors",
+        "summary": "Suggest competitors",
+        "description": "Suggests real competitors in the same market, with a website and a short reason for each.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "businessName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Business name."
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Business website."
+                  },
+                  "industry": {
+                    "type": "string",
+                    "description": "Industry hint."
+                  },
+                  "location": {
+                    "type": "string",
+                    "description": "Market or location."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "What the business does."
+                  },
+                  "productsServices": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Products or services the business offers."
+                  },
+                  "existingNames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Competitor names already in the project."
+                  },
+                  "variation": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 25,
+                    "description": "Increase to request fresh suggestions."
+                  }
+                },
+                "required": [
+                  "businessName",
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Suggested competitors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "competitors": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Competitor"
+                      }
+                    }
+                  },
+                  "required": [
+                    "competitors"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding/industries": {
+      "get": {
+        "tags": [
+          "Onboarding"
+        ],
+        "operationId": "onboardingListIndustries",
+        "summary": "List industries",
+        "description": "Lists the industry labels accepted by onboarding and project setup.",
+        "responses": {
+          "200": {
+            "description": "Allowed industry labels",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "industries": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "industries"
                   ]
                 }
               }

@@ -141,7 +141,14 @@
           {
             "group": "Onboarding",
             "pages": [
-              "api-reference/onboarding"
+              "POST /api/v1/onboarding/extract-website",
+              "POST /api/v1/onboarding/describe-brand",
+              "GET /api/v1/onboarding/describe-brand/status/{jobId}",
+              "POST /api/v1/onboarding/topics",
+              "POST /api/v1/onboarding/prompts",
+              "POST /api/v1/onboarding/prompts/batch",
+              "POST /api/v1/onboarding/competitors",
+              "GET /api/v1/onboarding/industries"
             ]
           },
           {

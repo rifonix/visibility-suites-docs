@@ -5,13 +5,11 @@ description: "New features, improvements, and fixes in Visibility Suite."
 
 <Update label="v2.1.0" description="October 23, 2026" tags={["Feature", "Improvement", "Fix"]}>
   - **Topics and questions are one onboarding step**: the AI suggests up to 10 market-level topics and writes about five questions for each one. Every topic supports add, edit, remove, and per-topic AI regeneration, and Back/forward navigation no longer regenerates anything.
-  - **More reliable, less brand-biased generation**: onboarding now uses a more capable LLM model, targets exact topic and question counts with server-side top-ups, and stops sending your brand name or marketing claims to the topic/question model. Questions must be answerable by several businesses in your market.
-  - **Decision API and reanalysis**: monitoring decisions now run through a dedicated decision API that batches answer classification, making analysis faster and more consistent. Reanalysis can be rerun for selected projects and date ranges without recapturing answers.
-  - **Better brand detection**: mention matching now handles chain-hotel name variants without fuzzy-match false positives, so multi-property brands are counted accurately.
+  - **More reliable, unbiased generation**: onboarding now produces a fuller set of market-level topics and customer-style questions, aims for the number you request, and keeps brand names and marketing claims out of the prompts so competitors can appear in the same answers.
+  - **Decision API and reanalysis**: monitoring analysis now runs through a dedicated decision API for faster, more consistent classifications. You can rerun analysis for selected projects and date ranges without recapturing answers.
   - **Smart tracking scope**: a deep brand URL such as a hotel or product page defaults to **Subfolder only**; root URLs, including `www`, non-`www`, and subdomains, default to **Full domain**. Choosing Full domain for a deep URL shows a warning. `www` and non-`www` versions of the same path are equivalent.
   - **Cleaner setup steps**: Step 1 is grouped into Business, Market, and Brand names; Step 2 is grouped into Overview, Offerings, and Audiences. Long product, tag, theme, and alias chips now wrap instead of overflowing.
-  - **Existing hotel projects corrected**: 24 chain-brand hotel projects that had hotel-page URLs but were tracking the full domain were moved to subfolder tracking (Marriott 8, Hyatt 8, Hilton 5, IHG 3).
-  - **Docs and API reference**: the wizard guide, multi-location guide, and API reference now cover the 6-step flow, tracking-scope rules, async brand research, ordered audiences, exact-count generation, and the batch question endpoint.
+  - **Docs**: the setup guide, multi-location guide, and API reference now match the new setup flow and tracking rules.
 </Update>
 
 <Update label="v2.0.0" description="October 2026" tags={["Launch"]}>
@@ -33,7 +31,7 @@ description: "New features, improvements, and fixes in Visibility Suite."
 </Update>
 
 <Update label="v1.14.1" description="September 28, 2026" tags={["Improvement", "Fix"]}>
-  - Redesigned the sentiment and mention analysis pipeline to be evidence-first, so every sentiment score links to the exact sentences behind it
+  - Redesigned sentiment and mention analysis to be evidence-first, so every sentiment score links to the exact sentences behind it
   - Stabilized media uploads in Content Studio and unified the AI assistant across the content editor
   - Fixed: media upload failures on slow connections no longer lose editor drafts
 </Update>
@@ -69,7 +67,7 @@ description: "New features, improvements, and fixes in Visibility Suite."
   - Split the Optimization section into dedicated **Agent Readiness**, **Opportunities**, and **Competitive Analysis** pages
   - Expanded the page-type taxonomy from 15 to 47 types, including hotels, restaurants, venues, and other local-business pages
   - Redesigned the ads page with brand accordions, per-prompt ad show rates, and source badges
-  - Fixed: monitoring workflows now respect a capture-slot budget and retry partial runs instead of stalling
+  - Fixed: monitoring runs recover from partial failures instead of stalling
   - Fixed: adding a discovered brand manually no longer returns a 500 error
 </Update>
 
@@ -82,7 +80,7 @@ description: "New features, improvements, and fixes in Visibility Suite."
 
 <Update label="v1.10.1" description="August 9, 2026" tags={["Improvement", "Fix"]}>
   - Added an Export CSV button to the projects list
-  - Fixed: onboarding no longer enables reasoning mode on the flash model, which caused slow or failed brand analysis
+  - Fixed: onboarding brand analysis is faster and more reliable
 </Update>
 
 <Update label="v1.10.0" description="August 7, 2026" tags={["Feature", "Improvement"]}>
@@ -106,7 +104,7 @@ description: "New features, improvements, and fixes in Visibility Suite."
 </Update>
 
 <Update label="v1.8.1" description="July 23, 2026" tags={["Improvement"]}>
-  - Upgraded the onboarding model and system prompts, so suggested topics, competitors, and prompts are more accurate for your market
+  - Improved onboarding suggestions, so topics, competitors, and questions are more accurate for your market
   - Fixed a layout issue on the onboarding review step
 </Update>
 
@@ -118,7 +116,7 @@ description: "New features, improvements, and fixes in Visibility Suite."
 
 <Update label="v1.7.1" description="June 18, 2026" tags={["Improvement"]}>
   - Added a demo workspace so new users can explore a filled-in project before connecting their own
-  - Monitoring now tracks token cost per run, with automatic model fallback if a provider is unavailable
+  - Monitoring is more resilient when an AI platform is temporarily unavailable
   - Hardened the monitoring client and scrubbed legacy configuration
 </Update>
 
@@ -150,7 +148,7 @@ description: "New features, improvements, and fixes in Visibility Suite."
 </Update>
 
 <Update label="v1.4.1" description="May 15, 2026" tags={["Improvement", "Fix"]}>
-  - Monitoring capture moved to a webhook-driven pipeline, with platform health tracking and faster run completion
+  - Monitoring capture was rebuilt for faster run completion and platform health tracking
   - Fixed: brand name matching is now normalized on every insert and update path, so mentions match more reliably
   - Fixed: cross-origin errors when the app was opened from a non-allowlisted domain
 </Update>
