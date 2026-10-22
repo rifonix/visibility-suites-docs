@@ -58,11 +58,17 @@ A successful response looks like this:
 The endpoint pages in this section auto-generate from the OpenAPI spec and are grouped by product area, matching the app's structure:
 
 - **Session, Organizations, Projects** for account setup and org management
+- **Onboarding** for website extraction, brand research, topic/question generation, and competitor suggestions
 - **Prompts, Topics, Brands** for what you monitor
 - **Monitoring** for triggering and listing runs
 - **Analytics, Answer Engine, Citations, Sentiment** for visibility data
 - **Opportunities, Content, Content Recommendations** for optimization
 - **Billing, Platforms, Notifications** for plan and platform metadata
+
+<Note>
+  The onboarding endpoints are available to any authenticated user, even without
+  an active subscription, so the trial wizard can run before purchase.
+</Note>
 
 <CardGroup cols={2}>
   <Card title="Authentication" icon="key" href="/api-reference/authentication">

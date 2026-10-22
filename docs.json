@@ -139,6 +139,12 @@
             ]
           },
           {
+            "group": "Onboarding",
+            "pages": [
+              "api-reference/onboarding"
+            ]
+          },
+          {
             "group": "Topics",
             "pages": [
               "GET /api/v1/projects/{projectId}/topics",

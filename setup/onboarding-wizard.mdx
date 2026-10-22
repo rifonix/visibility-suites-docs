@@ -1,68 +1,88 @@
 ---
 title: "The onboarding wizard"
-description: "A step-by-step tour of the 7-step setup wizard, what AI fills in at each step, and what happens when you launch."
+description: "A step-by-step tour of the 6-step setup wizard, what AI fills in at each step, and what happens when you launch."
 ---
 
-The onboarding wizard turns your website address into a complete monitoring setup in about 5 minutes. It has 7 steps: Setup, What you offer, Topics, Prompts, Platforms, Competitors, and Review & launch. A preview pane on the side shows your weekly cadence and how many prompts you are tracking as you go, and you can leave anytime with "Save draft & exit".
+The onboarding wizard turns your website address into a complete monitoring setup in about 5 minutes. It has 6 steps: Setup, Business profile, Topics & questions, Platforms, Competitors, and Review & launch. A preview pane on the side shows how many topics and questions you are tracking as you go, and you can leave anytime with "Save draft & exit".
 
 ## Step 1: Setup
 
-Headline: "See how AI talks about your brand."
+Headline: "Create your project."
 
-Enter your business name, website address, and location. Location matters: it tailors every generated question to your market, so a plumber in Leeds gets different prompts than one in Austin.
+Enter your business name, website address, and location. Location matters: it tailors every generated question to your market, so a plumber in Leeds gets different prompts than one in Austin. A deep link is fine; you do not need to find the homepage first.
 
 Two optional fields are worth your attention:
 
-- **Mention aliases**: other names AI might call you (old names, abbreviations, common misspellings). Anything listed here counts as your brand when answers are analyzed.
-- **Track this subfolder only**: limits monitoring to pages under one path, useful for a location page on a larger website.
+- **Brand names**: other names AI might call you (old names, abbreviations, common misspellings). Anything listed here counts as your brand when answers are analyzed.
+- **Tracking scope**: controls how much of the site we monitor.
+  - A URL with a path, such as `https://www.example.com/en-us/hotels/acme`, defaults to **Subfolder only**. We monitor that section and everything under it.
+  - A root URL, such as `https://example.com/`, `https://www.example.com/`, or a subdomain such as `https://app.example.com/`, tracks the **Full domain**.
+  - You can switch a deep URL to **Full domain**, but the wizard warns that every page on the host will be included, not just the subfolder.
+  - `www` and non-`www` versions of the same path are treated the same. A different path is a different scope.
+
+<Note>
+  If you are setting up one location on a shared brand site, keep the subfolder default. It prevents the location from inheriting citations and mentions from the rest of the domain.
+</Note>
 
 When you continue, Visibility Suite reads your website and researches your business on the web to fill in the next step.
 
-## Step 2: What you offer
+## Step 2: Business profile
 
-Headline: "Refine the brand AI sees."
+Headline: "Business profile."
 
-The wizard shows what its research found: what your business does, your industry, market and location, language, products and services, brand tags, themes, and AI-detected audience segments. Everything is editable, and a clearer profile means sharper prompts and more accurate scoring. Use "Regenerate" to re-extract from your site if something looks off. A free-text field at the bottom captures anything else AI should know, like your positioning or markets you avoid.
+The wizard shows what its research found, grouped into three sections:
 
-## Step 3: Topics
+- **Overview**: description, industry, market and location, language.
+- **Offerings & positioning**: products and services, brand tags, themes, and optional business context.
+- **Audiences**: AI-detected audience segments in priority order.
 
-Headline: "Choose the conversations that matter."
+Everything is editable. Use **Regenerate** in the Audiences section to re-extract from your site if something looks off. A clearer profile means better topics, better questions, and more accurate scoring.
 
-The wizard suggests market-level topic clusters, like "hotels near the convention center" or "wedding catering", each chosen because an AI answer to it would name several businesses. Keep the ones you want to be known for, and add custom topics of your own. Each kept topic gets its own set of questions in the next step.
+## Step 3: Topics & questions
 
-## Step 4: Prompts
+Headline: "Choose what to monitor."
 
-Headline: "These are the questions we'll ask."
+The AI suggests up to **10 market-level topics** for your business and automatically writes about **five questions** under each one. Topics group the conversations; questions are the exact prompts we send to the AI engines.
 
-For every topic, the wizard generates questions written the way real customers ask: anchored to your market, free of your brand name, with buying intent ("best family dentist in Plano", not "tell me about Plano Dental Group"). Each prompt carries an intent label and an estimated monthly volume. You can edit wording, regenerate a batch, or type your own questions. Everything remains editable after launch.
+- Keep, edit, or remove any topic or question.
+- Add your own question inside a topic, or add a topic the AI missed.
+- Use **Write with AI** / **Regenerate with AI** inside a topic to refresh just that topic's questions.
+- **Regenerate topics** replaces the AI-suggested list while keeping topics you added yourself.
+- Going Back and forward through the wizard does not regenerate anything. The buttons only call the AI when you ask them to.
 
-## Step 5: Platforms
+Questions are written at the market level and do not include your brand name. That is deliberate: a question like "best Italian restaurant in Tempe" forces AI to choose among businesses, while "is Tony's Italian good?" only tests one business and teaches you nothing about your competitive position.
 
-Headline: "Which AI engines should we cover?"
+<Note>
+  The AI targets 10 topics and 5 questions per topic. If the model returns fewer, the backend asks for the remainder before showing the step. You can always add or generate more yourself.
+</Note>
+
+## Step 4: Platforms
+
+Headline: "Choose AI engines."
 
 Pick the AI assistants to monitor: ChatGPT, Gemini, Perplexity, Microsoft Copilot, Grok, Google AI Overview, and Google AI Mode. Choose the ones your customers actually use. You can change this later in Settings.
 
-## Step 6: Competitors
+## Step 5: Competitors
 
-Headline: "Benchmark against your rivals."
+Headline: "Add competitors."
 
 Use "Find competitors with AI" to search the web for real, currently operating direct competitors in your market and price tier, each suggested with a website and a one-line reason. Keep the suggestions that matter, or add competitors manually. This step is optional: you can add competitors anytime after launch.
 
-## Step 7: Review & launch
+## Step 6: Review & launch
 
-Headline: "Everything look right?"
+Headline: "Review everything."
 
-The review screen shows the full setup and flags anything missing before you launch: a business name and website, at least one prompt, at least one AI platform. Choose "Confirm & start monitoring" to go live, or "Save as draft" to launch later.
+The review screen shows the full setup and flags anything missing before you launch: a business name and website, at least one question, and at least one AI platform. Choose "Confirm & start monitoring" to go live, or "Save as draft" to launch later. Every section has an **Edit** link back to the relevant step.
 
-After launch, monitoring runs weekly by default. Each run asks every active prompt on every platform you picked and saves the full answers. Change the schedule or trigger a manual run from Settings.
+After launch, monitoring runs weekly by default. Each run asks every active question on every platform you picked and saves the full answers. Change the schedule or trigger a manual run from Settings.
 
 ## What to read next
 
 <CardGroup cols={2}>
-  <Card title="Schedules and runs" icon="calendar" href="/setup/schedules">
-    How monitoring cadence works and what counts as a run.
+  <Card title="Topics and prompts" icon="message-lines" href="/setup/topics-and-prompts">
+    Manage the question library and understand how generated prompts are written.
   </Card>
-  <Card title="Brands and competitors" icon="building-store" href="/setup/brands-and-competitors">
-    Fine-tune your profile, aliases, and competitor list in Brand Hub.
+  <Card title="Multi-location tracking" icon="map-location-dot" href="/setup/multi-location">
+    Set up chains and franchises with subfolder mode and per-location projects.
   </Card>
 </CardGroup>

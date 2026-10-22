@@ -3,6 +3,17 @@ title: "Changelog"
 description: "New features, improvements, and fixes in Visibility Suite."
 ---
 
+<Update label="v2.1.0" description="October 23, 2026" tags={["Feature", "Improvement", "Fix"]}>
+  - **Topics and questions are one onboarding step**: the AI suggests up to 10 market-level topics and writes about five questions for each one. Every topic supports add, edit, remove, and per-topic AI regeneration, and Back/forward navigation no longer regenerates anything.
+  - **More reliable, less brand-biased generation**: onboarding now uses `deepseek/deepseek-v4.1-flash-1017`, targets exact topic and question counts with server-side top-ups, and stops sending your brand name or marketing claims to the topic/question model. Questions must be answerable by several businesses in your market.
+  - **Smart tracking scope**: a deep brand URL such as a hotel or product page defaults to **Subfolder only**; root URLs, including `www`, non-`www`, and subdomains, default to **Full domain**. Choosing Full domain for a deep URL shows a warning. `www` and non-`www` versions of the same path are equivalent.
+  - **Cleaner setup steps**: Step 1 is grouped into Business, Market, and Brand names; Step 2 is grouped into Overview, Offerings, and Audiences. Long product, tag, theme, and alias chips now wrap instead of overflowing.
+  - **Existing hotel projects corrected**: 24 chain-brand hotel projects that had hotel-page URLs but were tracking the full domain were moved to subfolder tracking (Marriott 8, Hyatt 8, Hilton 5, IHG 3).
+  - **Docs and API reference**: the wizard guide, multi-location guide, and API reference now cover the 6-step flow, tracking-scope rules, async brand research, ordered audiences, exact-count generation, and the batch question endpoint.
+
+  Release commits: [`f79657b`](https://github.com/rifonix/ai-visibility/commit/f79657b), [`1edfae1`](https://github.com/rifonix/ai-visibility/commit/1edfae1), [`a65cd75`](https://github.com/rifonix/ai-visibility/commit/a65cd75).
+</Update>
+
 <Update label="v2.0.0" description="October 2026" tags={["Launch"]}>
   Visibility Suite is publicly available. The launch includes:
 

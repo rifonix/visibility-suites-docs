@@ -9,6 +9,18 @@ Prompts are the heart of monitoring. Each one is a question a real customer migh
 
 Topics group related prompts so reports stay readable: "emergency repairs", "kids' birthday parties", "teeth whitening". The sidebar lists your topics, and "Add Topic" creates new ones. Topics come from onboarding, and you can add more anytime. Reports like Topic Performance on the Overview roll up by these groups, so name them after the parts of the business you care about.
 
+## Topics and questions during onboarding
+
+Onboarding now combines topics and questions in one step. The AI suggests up to **10 market-level topics** and automatically writes about **five questions** under each one, so you start with a usable library instead of an empty list.
+
+- Each topic card has its own **Add question** field and **Write with AI** / **Regenerate with AI** button.
+- Editing a topic keeps its questions attached.
+- Removing a topic removes its questions from the draft.
+- **Regenerate topics** refreshes the AI suggestions but keeps topics you added yourself.
+- Going Back and forward through the wizard never regenerates anything. The AI runs only when you press a generate button.
+
+The AI targets the requested counts and tops up short model replies with additional passes. If a topic still has no questions, the card shows a warning with a retry action so it does not silently disappear.
+
 ## Why the wording sounds the way it does
 
 Generated prompts follow a deliberate pattern: market-level, buying-intent, brand-name-free. "Best Italian restaurant in Tempe" is a good prompt; "Is Tony's Italian good?" is not. The first is a question where AI must choose among businesses, which is exactly the moment you want to win. Prompts only your business could match teach you nothing.
@@ -20,6 +32,8 @@ Each prompt carries an intent label (informational, transactional, comparison, o
 The library table shows every prompt with its topic, platforms, visibility, and status. Prompts can be active, paused, or archived. Archiving removes a prompt from the active list, and the "Archived Prompts" view lets you restore it later. You can export the whole library to CSV.
 
 ## Generating and adding prompts
+
+Onboarding already generates a starter library. Use this flow when you want to add more questions later.
 
 <Steps>
   <Step title="Open Add Prompt">
