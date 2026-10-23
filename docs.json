@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Visibility Suite",
   "colors": {
-    "primary": "#286cf0",
-    "light": "#5a90f7",
-    "dark": "#1c56c9"
+    "primary": "#0133ff",
+    "light": "#4d70ff",
+    "dark": "#0126c9"
   },
   "appearance": {
     "default": "light"
